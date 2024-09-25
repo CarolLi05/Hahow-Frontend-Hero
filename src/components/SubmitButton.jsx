@@ -21,6 +21,10 @@ const Wrapper = styled.button`
   transform: skewX(-20deg);
   padding: 16px;
   margin: 0 15px 15px 0;
+
+  &:hover {
+    background-color: #9f0013;
+  }
 `;
 
 export default function SubmitButton() {
