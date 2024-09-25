@@ -1,16 +1,17 @@
 import { styled } from "styled-components";
+import breakpoint from "../utils/breakpoint";
 import ImgSrc from "../assets/happyDoggie.png";
 
 const ImgWrapper = styled.div`
-  box-shadow: 0 7px 17px -8px rgba(0, 0, 0, 0.8);
-  transform: translate3d(0) scale(1);
-  transition: all 0.17s ease-in-out;
-  transform: translateZ(0);
+  height: 210px;
+  position: relative;
+  margin: 0;
+  padding: 0;
 `;
 
 const Img = styled.img.attrs({
   src: `${ImgSrc}`,
-  alt: 'Hero Image'
+  alt: "Hero Image",
 })`
   display: block;
   margin: 0;
@@ -18,29 +19,96 @@ const Img = styled.img.attrs({
   object-position: center center;
   padding: 0;
   width: 100%;
-  height: 20vh;
+  height: 100%;
+
+  &:after {
+    height: 4px;
+    content: "";
+    background-color: #e62429;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+`;
+
+const CardThumbnail = styled.div`
+  background: #e62429;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+
+  & div img {
+    transform: scaleX(1);
+    transition: all 0.2s linear;
+    overflow: hidden;
+    object-position: top center;
+  }
 `;
 
 const CardBody = styled.div`
-  padding: 0.75rem 0;
+  padding: 16px 10px 17px;
+  overflow: hidden;
+  position: relative;
+  line-height: 1;
+  background: #151515;
+  color: #e62429;
+  transition: color 0.3s;
+  border: none;
+  height: 100px;
+  vertical-align: middle;
+  z-index: 30;
+
+  &:before {
+    background: #e62429;
+    bottom: 100%;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    transition: transform 0.3s;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:after {
+    border-color: transparent #fff transparent transparent;
+    border-style: solid;
+    border-width: 12px 12px 0 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: auto;
+    z-index: 40;
+  }
+
+  @media screen and ${breakpoint.sm} {
+    padding: 16px 24px 17px 20px;
+  }
 `;
 
-const CardTitle = styled.h3`
-  font-size: 1.75rem;
+const CardTitle = styled.p`
+  color: #fff;
   font-weight: 700;
-  text-align: center;
   margin: 0;
 `;
 
 const Card = styled.div`
-  padding-bottom: 0.5rem;
+  margin: 6px 0 4px;
+  color: #fff;
+  transition: color 0.3s;
+  box-sizing: border-box;
+  position: relative;
 
   &:hover {
-    ${CardTitle} {
-      color: #e62429;
+    ${CardThumbnail} div img {
+      transform: scale3d(1.05, 1.05, 1);
     }
-    ${ImgWrapper} {
-      transform: translate3d(0, -2%, 0);
+
+    ${CardBody}:before {
+      transform: translate3d(0, 100%, 0);
     }
   }
 `;
@@ -48,9 +116,11 @@ const Card = styled.div`
 export default function HeroCard() {
   return (
     <Card>
-      <ImgWrapper>
-        <Img />
-      </ImgWrapper>
+      <CardThumbnail>
+        <ImgWrapper>
+          <Img />
+        </ImgWrapper>
+      </CardThumbnail>
       <CardBody>
         <CardTitle>Card Title</CardTitle>
       </CardBody>
