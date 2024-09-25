@@ -3,7 +3,11 @@ import HeroCard from "../components/HeroCard";
 import breakpoint from "../utils/breakpoint";
 
 const Container = styled.div`
-  max-width: 1280px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: calc(0.5 * 1.5rem);
+  padding-left: calc(0.5 * 1.5rem);
 `;
 
 const CardList = styled.div`
@@ -35,7 +39,6 @@ const Col = styled.div`
 export default function HeroList() {
   return (
     <Container>
-      <h1>Hero List</h1>
       <CardList>
         <Col>
           <HeroCard />
