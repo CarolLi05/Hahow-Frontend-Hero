@@ -1,60 +1,30 @@
-import { styled } from "styled-components";
+// import { styled } from "styled-components";
+import HeroProfile from "./HeroProfile";
 import HeroCard from "../components/HeroCard";
-import breakpoint from "../utils/breakpoint";
-
-const Container = styled.div`
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: calc(0.5 * 1.5rem);
-  padding-left: calc(0.5 * 1.5rem);
-`;
-
-const CardList = styled.div`
-  margin-top: 5rem;
-  margin-right: calc(-0.5 * 1.5rem);
-  margin-left: calc(-0.5 * 1.5rem);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-center;
-  align-items: center;
-`;
-
-const Col = styled.div`
-  flex: 1 0 0%
-  flex-basis: 100%;
-  padding-right: calc(0.5 * 1.5rem);
-  padding-left: calc(0.5 * 1.5rem);
-  box-sizing: border-box;
-
-  @media screen and ${breakpoint.sm} {
-    flex-basis: 50%;
-  }
-
-  @media screen and ${breakpoint.md} {
-    flex-basis: 25%;
-  }
-`;
+import { Container, Content, Row, Col } from "../components/UI/Layout";
 
 export default function HeroList() {
   return (
     <Container>
-      <CardList>
-        <Col>
-          <HeroCard />
-        </Col>
-        <Col>
-          <HeroCard />
-        </Col>
-        <Col>
-          <HeroCard />
-        </Col>
-        <Col>
-          <HeroCard />
-        </Col>
-      </CardList>
+      <Content>
+        <Row $justifyContent="center" $alignItem="center">
+          <Col>
+            <HeroCard />
+          </Col>
+          <Col>
+            <HeroCard />
+          </Col>
+          <Col>
+            <HeroCard />
+          </Col>
+          <Col>
+            <HeroCard />
+          </Col>
+        </Row>
+        <HeroProfile></HeroProfile>
+      </Content>
     </Container>
-  )
+  );
 }
 
 // export function loader() {
