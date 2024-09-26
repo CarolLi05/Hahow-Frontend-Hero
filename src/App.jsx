@@ -6,12 +6,10 @@ const router = createBrowserRouter([
   {
     path: "/heroes",
     element: <HeroList />,
-    children: [
-      {
-        path: "/heroes/:heroId",
-        element: <HeroProfile />,
-      },
-    ]
+  },
+  {
+    path: "/heroes/:heroId",
+    element: <HeroProfile />,
   },
 ]);
 
