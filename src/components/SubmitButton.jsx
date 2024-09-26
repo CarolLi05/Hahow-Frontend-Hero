@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const Title = styled.span`
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
   font-size: 1.25rem;
   display: block;
@@ -12,18 +12,17 @@ const Title = styled.span`
 `;
 
 const Wrapper = styled.button`
-  background-color: #e62429;
-  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.primary};
   display: inline-block;
   overflow: hidden;
   position: relative;
   width: auto;
-  transform: skewX(-20deg);
   padding: 16px;
   margin: 0 15px 15px 0;
+  transform: skewX(-20deg);
 
   &:hover {
-    background-color: #9f0013;
+    background-color: ${({ theme }) => theme.colors.primaryHover};
   }
 `;
 

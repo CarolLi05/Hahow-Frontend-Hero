@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import breakpoint from "../utils/breakpoint";
+import breakpoint from "../styles/breakpoint";
 import ImgSrc from "../assets/happyDoggie.png";
 
 const ImgWrapper = styled.div`
@@ -15,25 +15,25 @@ const Img = styled.img.attrs({
 })`
   display: block;
   margin: 0;
+  padding: 0;
   object-fit: cover;
   object-position: center center;
-  padding: 0;
   width: 100%;
   height: 100%;
 
   &:after {
-    height: 4px;
-    content: "";
-    background-color: #e62429;
-    width: 100%;
     position: absolute;
     left: 0;
     bottom: 0;
+    content: "";
+    background-color: ${({ theme }) => theme.colors.primary};
+    width: 100%;
+    height: 4px;
   }
 `;
 
 const CardThumbnail = styled.div`
-  background: #e62429;
+  background: ${({ theme }) => theme.colors.primary};
   margin: 0;
   overflow: hidden;
   padding: 0;
@@ -47,28 +47,28 @@ const CardThumbnail = styled.div`
 `;
 
 const CardBody = styled.div`
+  position: relative;
   padding: 16px 10px 17px;
   overflow: hidden;
-  position: relative;
   line-height: 1;
-  background: #151515;
-  color: #e62429;
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.primary};
   transition: color 0.3s;
   border: none;
-  height: 100px;
   vertical-align: middle;
   z-index: 30;
+  height: 100px;
 
   &:before {
-    background: #e62429;
+    background: ${({ theme }) => theme.colors.primary};
+    position: absolute;
+    left: 0;
     bottom: 100%;
     content: "";
+    width: 100%;
     height: 100%;
-    left: 0;
-    position: absolute;
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     transition: transform 0.3s;
-    width: 100%;
     z-index: -1;
   }
 
@@ -76,11 +76,11 @@ const CardBody = styled.div`
     border-color: transparent #fff transparent transparent;
     border-style: solid;
     border-width: 12px 12px 0 0;
+    position: absolute;
+    top: auto;
+    right: 0;
     bottom: 0;
     content: "";
-    position: absolute;
-    right: 0;
-    top: auto;
     z-index: 40;
   }
 
@@ -90,16 +90,14 @@ const CardBody = styled.div`
 `;
 
 const CardTitle = styled.p`
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
-  margin: 0;
 `;
 
 const Card = styled.div`
   margin: 6px 0 4px;
   color: #fff;
   transition: color 0.3s;
-  box-sizing: border-box;
   position: relative;
 
   &:hover {
