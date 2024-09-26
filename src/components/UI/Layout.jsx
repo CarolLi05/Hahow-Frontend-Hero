@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import breakpoint from "../../utils/breakpoint.js";
+import breakpoint from "../../styles/breakpoint.js";
 
 const Container = styled.div`
   width: 100%;
@@ -7,15 +7,25 @@ const Container = styled.div`
   margin-left: auto;
   padding-right: calc(0.5 * 1.5rem);
   padding-left: calc(0.5 * 1.5rem);
-`;
+  @media screen and ${breakpoint.sm} {
+    max-width: 540px;
+  }
 
-const Content = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
+  @media screen and ${breakpoint.md} {
+    max-width: 720px;
+  }
+
+  @media screen and ${breakpoint.lg} {
+    max-width: 960px;
+  }
+
+  @media screen and ${breakpoint.xl} {
+    max-width: 1140px;
+  }
 `;
 
 const Row = styled.div`
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-right: calc(-0.5 * 1.5rem);
   margin-left: calc(-0.5 * 1.5rem);
   display: flex;
@@ -40,4 +50,4 @@ const Col = styled.div`
   }
 `;
 
-export { Container, Content, Row, Col };
+export { Container, Row, Col };

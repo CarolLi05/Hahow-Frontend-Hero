@@ -1,12 +1,11 @@
 // import { styled } from "styled-components";
 import HeroProfile from "./HeroProfile";
 import HeroCard from "../components/HeroCard";
-import { Container, Content, Row, Col } from "../components/UI/Layout";
+import { Container, Row, Col } from "../components/UI/Layout";
 
 export default function HeroList() {
   return (
     <Container>
-      <Content>
         <Row $justifyContent="center" $alignItem="center">
           <Col>
             <HeroCard />
@@ -22,7 +21,6 @@ export default function HeroList() {
           </Col>
         </Row>
         <HeroProfile></HeroProfile>
-      </Content>
     </Container>
   );
 }
