@@ -25,17 +25,14 @@ const Container = styled.div`
 `;
 
 const Row = styled.div`
-  margin-top: 3rem;
-  margin-right: calc(-0.5 * 1.5rem);
-  margin-left: calc(-0.5 * 1.5rem);
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${(props) => props.$justifyContent || "left"};
-  align-items: ${(props) => props.$alignItem || "start"};
+  margin-right: calc(-0.5 * 1.5rem);
+  margin-left: calc(-0.5 * 1.5rem);
 `;
 
 const Col = styled.div`
-  flex: 1 0 0%
+  flex: 1 0 0%;
   flex-basis: 100%;
   padding-right: calc(0.5 * 1.5rem);
   padding-left: calc(0.5 * 1.5rem);
