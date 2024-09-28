@@ -2,18 +2,11 @@ import { styled } from "styled-components";
 import { PlusSvg, MinusSvg } from "../components/UI/Icon";
 
 const Wrapper = styled.div`
-  border: 1px solid #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40vw;
   margin-bottom: 0.5rem;
   padding: 1rem 0.5rem;
-`;
-
-const Content = styled.span`
-  display: inline-flex;
-  align-items: center;
 `;
 
 const Title = styled.span`
@@ -23,9 +16,17 @@ const Title = styled.span`
   margin-right: 0.5rem;
 `;
 
+const Control = styled.span`
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 10rem;
+`;
+
 const Points = styled.span`
   font-size: 1.5rem;
   font-weight: 700;
+  margin: 0 0.75rem;
 `;
 
 const Button = styled.button`
@@ -49,16 +50,16 @@ const Button = styled.button`
 export default function Ability({ title, points, noMorePoint }) {
   return (
     <Wrapper>
-      <Button type="button" disabled={noMorePoint}>
-        <MinusSvg />
-      </Button>
-      <Content>
-        <Title>STR{title}</Title>
-        <Points>5{points}</Points>
-      </Content>
-      <Button type="button" disabled={noMorePoint}>
-        <PlusSvg />
-      </Button>
+      <Title>{title}</Title>
+      <Control>
+        <Button type="button" disabled={noMorePoint}>
+          <MinusSvg />
+        </Button>
+        <Points>{points}</Points>
+        <Button type="button" disabled={noMorePoint}>
+          <PlusSvg />
+        </Button>
+      </Control>
     </Wrapper>
   );
 }
