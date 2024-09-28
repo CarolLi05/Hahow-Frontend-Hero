@@ -2,47 +2,49 @@ import { styled } from "styled-components";
 import Border from "../components/UI/Border";
 import Ability from "../components/Ability";
 import SubmitButton from "../components/SubmitButton";
+import { Row, Col } from "../components/UI/Layout";
 
-const Wrapper = styled.div`
-  width: 100%;
-  margin-top: 30px;
+const Wrapper = styled(Row)`
+  margin-top: 2rem;
+  padding-right: calc(0.5 * 1.5rem);
+  padding-left: calc(0.5 * 1.5rem);
 `;
 
-const Content = styled.div`
-  margin: 0 3rem;
+const Control = styled(Col)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin-left: 0.75rem;
 `;
 
-const Footer = styled.div`
+const SubmitContent = styled(Col)`
   display: flex;
-  margin-top: 0.5rem;
-  justify-content: center;
+  justify-content: end;
+  align-self: end;
+  margin-right: 0.75rem;
 `;
 
 const RemainingPoints = styled.p`
   color: ${({ theme }) => theme.colors.black};
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 export default function HeroProfile({ remainingPoints }) {
   return (
     <Wrapper>
       <Border position="top" />
-      <Content>
+      <Control>
         <RemainingPoints>剩餘分數：30{remainingPoints}</RemainingPoints>
-        <Ability />
-        <Ability />
-        <Ability />
-        <Ability />
-      </Content>
-      <Footer>
+        <Ability title="str" points="5" />
+        <Ability title="int" points="10" />
+        <Ability title="agi" points="8" />
+        <Ability title="luk" points="7" />
+      </Control>
+      <SubmitContent>
         <SubmitButton />
-      </Footer>
+      </SubmitContent>
       <Border position="bottom" />
     </Wrapper>
   );
