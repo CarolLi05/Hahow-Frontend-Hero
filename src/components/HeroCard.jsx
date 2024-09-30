@@ -5,7 +5,7 @@ export default function HeroCard({name, image, selected}) {
     <Card className={`${selected ? "active" : ""}`}>
       <Thumbnail>
         <ImgWrapper>
-          <Img src={image} />
+          <Img src={image} alt={name} />
         </ImgWrapper>
       </Thumbnail>
       <Body>
