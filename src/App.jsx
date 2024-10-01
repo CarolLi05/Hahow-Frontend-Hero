@@ -1,9 +1,17 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import Heroes from "./pages/Heroes";
 import HeroProfile from "./components/HeroProfile";
 import { HeroesLoader } from "./pages/HeroesLoader";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/heroes" replace />,
+  },
   {
     path: "/heroes",
     element: <Heroes />,
