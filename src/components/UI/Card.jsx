@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import breakpoint from "../../styles/breakpoint.js";
 
@@ -90,7 +91,7 @@ const Title = styled.p`
   font-weight: 700;
 `;
 
-const Card = styled.div`
+const Card = styled(Link)`
   margin: 6px 0 4px;
   color: #fff;
   transition: color 0.3s;
