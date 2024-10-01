@@ -1,5 +1,6 @@
 // import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
+import { useLoaderData } from "react-router-dom";
 import { Row, Col } from "./UI/Layout";
 import Border from "./UI/Border";
 import Ability from "./Ability";
@@ -34,16 +35,20 @@ const RemainingPoints = styled.p`
 
 export default function HeroProfile({ remainingPoints }) {
   // const { heroId } = useParams(); // 使用 useParams 取得路由參數
+  const resData = useLoaderData();
+  console.log("resData", resData);
+  const profileData = Object.entries(resData);
+  console.log("data", profileData);
+  
 
   return (
     <Wrapper>
       <Border position="top" />
       <Control>
         <RemainingPoints>剩餘分數：30{remainingPoints}</RemainingPoints>
-        <Ability title="str" points="5" />
-        <Ability title="int" points="10" />
-        <Ability title="agi" points="8" />
-        <Ability title="luk" points="7" />
+        {profileData.map(([title, points]) => (
+          <Ability key={title} title={title} points={points} />
+        ))}
       </Control>
       <SubmitContent>
         <SubmitButton />
