@@ -6,6 +6,7 @@ import {
 import Heroes from "./pages/Heroes";
 import HeroProfile from "./components/HeroProfile";
 import { HeroesLoader } from "./pages/HeroesLoader";
+import { HeroProfileLoader } from "./components/HeroProfileLoader";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/heroes/:heroId",
         element: <HeroProfile />,
+        loader: HeroProfileLoader,
       },
     ],
   },
