@@ -1,8 +1,9 @@
+// import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import Border from "../components/UI/Border";
-import Ability from "../components/Ability";
-import SubmitButton from "../components/SubmitButton";
-import { Row, Col } from "../components/UI/Layout";
+import { Row, Col } from "./UI/Layout";
+import Border from "./UI/Border";
+import Ability from "./Ability";
+import SubmitButton from "./SubmitButton";
 
 const Wrapper = styled(Row)`
   margin-top: 2rem;
@@ -32,6 +33,8 @@ const RemainingPoints = styled.p`
 `;
 
 export default function HeroProfile({ remainingPoints }) {
+  // const { heroId } = useParams(); // 使用 useParams 取得路由參數
+
   return (
     <Wrapper>
       <Border position="top" />

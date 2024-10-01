@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Heroes from "./pages/Heroes";
 import HeroProfile from "./components/HeroProfile";
 import { HeroesLoader } from "./pages/HeroesLoader";
@@ -8,10 +8,12 @@ const router = createBrowserRouter([
     path: "/heroes",
     element: <Heroes />,
     loader: HeroesLoader,
-  },
-  {
-    path: "/heroes/:heroId",
-    element: <HeroProfile />,
+    children: [
+      {
+        path: "/heroes/:heroId",
+        element: <HeroProfile />,
+      },
+    ],
   },
 ]);
 
