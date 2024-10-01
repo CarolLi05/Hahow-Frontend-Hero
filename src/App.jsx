@@ -1,13 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HeroList from "./pages/HeroList"
-import HeroProfile from "./pages/HeroProfile";
-import getHeroes from "./api/getHeroes";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import Heroes from "./pages/Heroes";
+import HeroProfile from "./components/HeroProfile";
+import { HeroesLoader } from "./pages/HeroesLoader";
 
 const router = createBrowserRouter([
   {
     path: "/heroes",
-    element: <HeroList />,
-    loader: getHeroes,
+    element: <Heroes />,
+    loader: HeroesLoader,
   },
   {
     path: "/heroes/:heroId",
