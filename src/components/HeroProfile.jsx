@@ -5,6 +5,7 @@ import { Row, Col } from "./UI/Layout";
 import Border from "./UI/Border";
 import Ability from "./Ability";
 import SubmitButton from "./SubmitButton";
+import { getProfile } from '../api/apis';
 
 const Wrapper = styled(Row)`
   margin-top: 2rem;
@@ -33,19 +34,18 @@ const RemainingPoints = styled.p`
   margin-bottom: 1rem;
 `;
 
-export default function HeroProfile({ remainingPoints }) {
+export default function HeroProfile() {
   // const { heroId } = useParams(); // 使用 useParams 取得路由參數
   const resData = useLoaderData();
   console.log("resData", resData);
   const profileData = Object.entries(resData);
   console.log("data", profileData);
-  
 
   return (
     <Wrapper>
       <Border position="top" />
       <Control>
-        <RemainingPoints>剩餘分數：30{remainingPoints}</RemainingPoints>
+        <RemainingPoints>剩餘分數：30</RemainingPoints>
         {profileData.map(([title, points]) => (
           <Ability key={title} title={title} points={points} />
         ))}
@@ -56,4 +56,10 @@ export default function HeroProfile({ remainingPoints }) {
       <Border position="bottom" />
     </Wrapper>
   );
+}
+
+export async function HeroProfileLoader({ params }) {
+  const id = params.heroId;
+  const response = await getProfile(id);
+  return response;
 }

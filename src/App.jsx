@@ -3,10 +3,8 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import Heroes from "./pages/Heroes";
-import HeroProfile from "./components/HeroProfile";
-import { HeroesLoader } from "./pages/HeroesLoader";
-import { HeroProfileLoader } from "./components/HeroProfileLoader";
+import Heroes, { HeroesLoader } from "./pages/Heroes";
+import HeroProfile, { HeroProfileLoader } from "./components/HeroProfile";
 
 const router = createBrowserRouter([
   {
