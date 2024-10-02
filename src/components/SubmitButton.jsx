@@ -26,10 +26,10 @@ const Title = styled.span`
   transform: skewX(20deg);
 `;
 
-export default function SubmitButton({ onClick }) {
+export default function SubmitButton({ onClick, title }) {
   return (
     <Wrapper type="button" onClick={onClick}>
-      <Title>儲存</Title>
+      <Title>{title}</Title>
     </Wrapper>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { styled } from "styled-components";
-import { useLoaderData, useSubmit } from "react-router-dom";
+import { useLoaderData, useSubmit, useNavigation } from "react-router-dom";
 import { Row, Col } from "./UI/Layout";
 import Border from "./UI/Border";
 import Ability from "./Ability";
@@ -44,6 +44,8 @@ export default function HeroProfile() {
   });
   const [remainingPoints, setRemainingPoints] = useState(0);
   const submit = useSubmit();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   function handleIncrease(ability) {
     if (remainingPoints > 0) {
@@ -94,7 +96,10 @@ export default function HeroProfile() {
         ))}
       </Control>
       <SubmitContent>
-        <SubmitButton onClick={() => handleSave(abilities)}
+        <SubmitButton
+          disabled={isSubmitting}
+          title={isSubmitting ? "更新中..." : "儲存"}
+          onClick={() => handleSave(abilities)}
         />
       </SubmitContent>
       <Border position="bottom" />
