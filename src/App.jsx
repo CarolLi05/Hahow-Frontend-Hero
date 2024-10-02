@@ -4,7 +4,10 @@ import {
   Navigate,
 } from "react-router-dom";
 import Heroes, { HeroesLoader } from "./pages/Heroes";
-import HeroProfile, { HeroProfileLoader } from "./components/HeroProfile";
+import HeroProfile, {
+  HeroProfileLoader,
+  HeroProfileAction,
+} from "./components/HeroProfile";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,7 @@ const router = createBrowserRouter([
         path: "/heroes/:heroId",
         element: <HeroProfile />,
         loader: HeroProfileLoader,
+        action: HeroProfileAction,
       },
     ],
   },

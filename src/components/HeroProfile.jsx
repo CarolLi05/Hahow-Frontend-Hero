@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { styled } from "styled-components";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSubmit } from "react-router-dom";
 import { Row, Col } from "./UI/Layout";
 import Border from "./UI/Border";
 import Ability from "./Ability";
 import SubmitButton from "./SubmitButton";
-import { getProfile } from "../api/apis";
+import { getProfile, updateProfile } from "../api/apis";
 
 const Wrapper = styled(Row)`
   margin-top: 2rem;
@@ -43,6 +43,7 @@ export default function HeroProfile() {
     luk: heroProfileData.luk,
   });
   const [remainingPoints, setRemainingPoints] = useState(0);
+  const submit = useSubmit();
 
   function handleIncrease(ability) {
     if (remainingPoints > 0) {
@@ -63,6 +64,19 @@ export default function HeroProfile() {
     }
   }
 
+  function handleSave(data) {
+    const totalPoints = Object.values(heroProfileData).reduce(
+      (result, point) => result + point
+    );
+    const currentTotalPoints = Object.values(abilities).reduce(
+      (result, point) => result + point
+    );
+
+    if (totalPoints === currentTotalPoints) {
+      submit(data, { method: 'PATCH', encType: "application/json" });
+    }
+  }
+
   return (
     <Wrapper>
       <Border position="top" />
@@ -80,7 +94,8 @@ export default function HeroProfile() {
         ))}
       </Control>
       <SubmitContent>
-        <SubmitButton />
+        <SubmitButton onClick={() => handleSave(abilities)}
+        />
       </SubmitContent>
       <Border position="bottom" />
     </Wrapper>
@@ -91,4 +106,17 @@ export async function HeroProfileLoader({ params }) {
   const id = params.heroId;
   const response = await getProfile(id);
   return response;
+}
+
+export async function HeroProfileAction({ request, params }) {
+  const id = params.heroId;
+  const heroData = await request.json();
+  const method = request.method;
+  
+  const response = await updateProfile(id, method, heroData);
+  if (!response.ok) {
+    throw new Error("Couldn't update Heroes Data!");
+  } else {
+    return response;
+  }
 }
