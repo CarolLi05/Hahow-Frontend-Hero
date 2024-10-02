@@ -47,16 +47,16 @@ const Button = styled.button`
   }
 `;
 
-export default function Ability({ title, points, noMorePoint }) {
+export default function Ability({ title, points, noMorePoint, onIncrease, onDecrease }) {
   return (
     <Wrapper>
       <Title>{title}</Title>
       <Control>
-        <Button type="button" disabled={noMorePoint}>
+        <Button type="button" disabled={points === 0} onClick={onDecrease}>
           <MinusSvg />
         </Button>
         <Points>{points}</Points>
-        <Button type="button" disabled={noMorePoint}>
+        <Button type="button" disabled={noMorePoint} onClick={onIncrease}>
           <PlusSvg />
         </Button>
       </Control>
