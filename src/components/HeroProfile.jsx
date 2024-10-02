@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 import { useLoaderData, useSubmit, useNavigation } from "react-router-dom";
 import { Row, Col } from "./UI/Layout";
 import Border from "./UI/Border";
+import { SubmitButton } from "./UI/SubmitButton";
 import Ability from "./Ability";
-import SubmitButton from "./SubmitButton";
 import { getProfile, updateProfile } from "../api/apis";
 
 const Wrapper = styled(Row)`
@@ -75,7 +75,7 @@ export default function HeroProfile() {
     );
 
     if (totalPoints === currentTotalPoints) {
-      submit(data, { method: 'PATCH', encType: "application/json" });
+      submit(data, { method: "PATCH", encType: "application/json" });
     }
   }
 
@@ -98,9 +98,10 @@ export default function HeroProfile() {
       <SubmitContent>
         <SubmitButton
           disabled={isSubmitting}
-          title={isSubmitting ? "更新中..." : "儲存"}
           onClick={() => handleSave(abilities)}
-        />
+        >
+          <span>{isSubmitting ? "更新中..." : "儲存"}</span>
+        </SubmitButton>
       </SubmitContent>
       <Border position="bottom" />
     </Wrapper>
@@ -117,7 +118,7 @@ export async function HeroProfileAction({ request, params }) {
   const id = params.heroId;
   const heroData = await request.json();
   const method = request.method;
-  
+
   const response = await updateProfile(id, method, heroData);
   if (!response.ok) {
     throw new Error("Couldn't update Heroes Data!");
