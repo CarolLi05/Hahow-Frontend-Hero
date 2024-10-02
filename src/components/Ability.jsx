@@ -45,6 +45,11 @@ const Button = styled.button`
     stroke: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.primary};
   }
+
+  &:disabled {
+    stroke: ${({ theme }) => theme.colors.disabled};
+    background-color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export default function Ability({ title, points, noMorePoint, onIncrease, onDecrease }) {
