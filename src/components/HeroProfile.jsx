@@ -74,6 +74,10 @@ export default function HeroProfile() {
       (result, point) => result + point
     );
 
+    if (remainingPoints > 0) {
+      alert(`你還有 ${remainingPoints} 點沒有分配到唷！`);
+    }
+
     if (totalPoints === currentTotalPoints) {
       submit(data, { method: "PATCH", encType: "application/json" });
     }
@@ -91,7 +95,7 @@ export default function HeroProfile() {
             points={points}
             onIncrease={() => handleIncrease(title)}
             onDecrease={() => handleDecrease(title)}
-            noMorePoint={remainingPoints === 0}
+            noMorePoint={remainingPoints <= 0}
           />
         ))}
       </Control>
