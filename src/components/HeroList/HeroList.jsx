@@ -1,18 +1,10 @@
-import { styled } from "styled-components";
 import { useLoaderData } from "react-router-dom";
-import HeroCard from "./HeroCard";
-import { Row, Col } from "./UI/Layout";
-
-const ListWrapper = styled(Row)`
-  margin-top: 3rem;
-  justify-content: center;
-  align-items: center;
-`;
+import HeroCard from "../HeroCard/HeroCard";
+import { Col } from "../UI/Layout";
+import { ListWrapper } from "./HeroListUI";
 
 export default function HeroList() {
-  const data = useLoaderData();
-  console.log('data', data);
-  
+  const data = useLoaderData();  
 
   return (
     <ListWrapper>

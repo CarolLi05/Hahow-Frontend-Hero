@@ -21,7 +21,7 @@ const BorderTopWrapper = styled.div`
   display: flex;
   flex-direction: column;
   left: 0;
-  height: 73px;
+  height: 55px;
   width: 100%;
 
   & span {

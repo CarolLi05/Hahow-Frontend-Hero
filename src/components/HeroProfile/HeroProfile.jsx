@@ -1,38 +1,14 @@
 import { useState } from "react";
-import { styled } from "styled-components";
 import { useLoaderData, useSubmit, useNavigation } from "react-router-dom";
-import { Row, Col } from "./UI/Layout";
-import Border from "./UI/Border";
-import { SubmitButton } from "./UI/SubmitButton";
-import Ability from "./Ability";
-import { getProfile, updateProfile } from "../api/apis";
-
-const Wrapper = styled(Row)`
-  margin-top: 2rem;
-  padding-right: calc(0.5 * 1.5rem);
-  padding-left: calc(0.5 * 1.5rem);
-`;
-
-const Control = styled(Col)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 0.75rem;
-`;
-
-const SubmitContent = styled(Col)`
-  display: flex;
-  justify-content: end;
-  align-self: end;
-  margin-right: 0.75rem;
-`;
-
-const RemainingPoints = styled.p`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-`;
+import {
+  ProfileWrapper,
+  Counter,
+  SubmitContent,
+  RemainingPoints,
+} from "./HeroProfileUI";
+import Border from "./Border";
+import { SubmitButton } from "./SubmitButton";
+import Ability from "../Ability/Ability";
 
 export default function HeroProfile() {
   const heroProfileData = useLoaderData();
@@ -84,9 +60,9 @@ export default function HeroProfile() {
   }
 
   return (
-    <Wrapper>
+    <ProfileWrapper>
       <Border position="top" />
-      <Control>
+      <Counter>
         <RemainingPoints>剩餘分數：{remainingPoints}</RemainingPoints>
         {Object.entries(abilities).map(([title, points]) => (
           <Ability
@@ -98,7 +74,7 @@ export default function HeroProfile() {
             noMorePoint={remainingPoints <= 0}
           />
         ))}
-      </Control>
+      </Counter>
       <SubmitContent>
         <SubmitButton
           disabled={isSubmitting}
@@ -108,25 +84,10 @@ export default function HeroProfile() {
         </SubmitButton>
       </SubmitContent>
       <Border position="bottom" />
-    </Wrapper>
+    </ProfileWrapper>
   );
 }
 
-export async function HeroProfileLoader({ params }) {
-  const id = params.heroId;
-  const response = await getProfile(id);
-  return response;
-}
 
-export async function HeroProfileAction({ request, params }) {
-  const id = params.heroId;
-  const heroData = await request.json();
-  const method = request.method;
 
-  const response = await updateProfile(id, method, heroData);
-  if (!response.ok) {
-    throw new Error("Couldn't update Heroes Data!");
-  } else {
-    return response;
-  }
-}
+

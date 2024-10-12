@@ -1,4 +1,4 @@
-import { Card, Thumbnail, ImgWrapper, Img, Body, Title } from "./UI/Card";
+import { Card, Thumbnail, ImgWrapper, Img, Body, Title } from "./HeroCardUI";
 
 export default function HeroCard({id, name, image, selected}) {
   return (
