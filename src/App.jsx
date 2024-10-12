@@ -3,11 +3,11 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import Heroes, { HeroesLoader } from "./pages/Heroes";
-import HeroProfile, {
-  HeroProfileLoader,
-  HeroProfileAction,
-} from "./components/HeroProfile";
+import Heroes from "./pages/Heroes";
+import HeroProfile from "./components/HeroProfile/HeroProfile";
+import { HeroesLoader } from "./router_task/HeroesLoader";
+import { HeroProfileLoader } from "./router_task/HeroProfileLoader";
+import { HeroProfileAction } from "./router_task/HeroProfileAction";
 
 const router = createBrowserRouter([
   {
