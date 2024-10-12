@@ -6,6 +6,7 @@ import {
   SubmitContent,
   RemainingPoints,
 } from "./HeroProfileUI";
+import { Col } from "../UI/Layout";
 import Border from "./Border";
 import { SubmitButton } from "./SubmitButton";
 import Ability from "../Ability/Ability";
@@ -61,29 +62,31 @@ export default function HeroProfile() {
 
   return (
     <ProfileWrapper>
-      <Border position="top" />
-      <Counter>
-        <RemainingPoints>剩餘分數：{remainingPoints}</RemainingPoints>
-        {Object.entries(abilities).map(([title, points]) => (
-          <Ability
-            key={title}
-            title={title}
-            points={points}
-            onIncrease={() => handleIncrease(title)}
-            onDecrease={() => handleDecrease(title)}
-            noMorePoint={remainingPoints <= 0}
-          />
-        ))}
-      </Counter>
-      <SubmitContent>
-        <SubmitButton
-          disabled={isSubmitting}
-          onClick={() => handleSave(abilities)}
-        >
-          <span>{isSubmitting ? "更新中..." : "儲存"}</span>
-        </SubmitButton>
-      </SubmitContent>
-      <Border position="bottom" />
+      <Col>
+        <Border position="top" />
+        <Counter>
+          <RemainingPoints>剩餘分數：{remainingPoints}</RemainingPoints>
+          {Object.entries(abilities).map(([title, points]) => (
+            <Ability
+              key={title}
+              title={title}
+              points={points}
+              onIncrease={() => handleIncrease(title)}
+              onDecrease={() => handleDecrease(title)}
+              noMorePoint={remainingPoints <= 0}
+            />
+          ))}
+        </Counter>
+        <SubmitContent>
+          <SubmitButton
+            disabled={isSubmitting}
+            onClick={() => handleSave(abilities)}
+          >
+            <span>{isSubmitting ? "更新中..." : "儲存"}</span>
+          </SubmitButton>
+        </SubmitContent>
+        <Border position="bottom" />
+      </Col>
     </ProfileWrapper>
   );
 }

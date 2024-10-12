@@ -16,7 +16,7 @@ const BorderSvg = () => {
   );
 };
 
-const BorderTopWrapper = styled.div`
+const BorderTop = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,10 +30,13 @@ const BorderTopWrapper = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
+    fill: none;
+    stroke: #c6a972;
+    stroke-width: 3px;
   }
 `;
 
-const BorderBottomWrapper = styled.div`
+const BorderBottom = styled.div`
   position: relative;
   display: block;
   bottom: 0;
@@ -45,6 +48,9 @@ const BorderBottomWrapper = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+    fill: none;
+    stroke: #c6a972;
+    stroke-width: 3px;
   }
 
   & span svg {
@@ -53,30 +59,20 @@ const BorderBottomWrapper = styled.div`
   }
 `;
 
-const BorderContent = styled.span`
-  fill: none;
-  stroke: #c6a972;
-  stroke-width: 3px;
-`;
-
 export default function Border({ position }) {
   if (position === "top") {
     return (
-      <BorderTopWrapper>
-        <BorderContent>
-          <BorderSvg />
-        </BorderContent>
-      </BorderTopWrapper>
+      <BorderTop>
+        <span><BorderSvg /></span>
+      </BorderTop>
     );
   }
 
   if (position === "bottom") {
     return (
-      <BorderBottomWrapper>
-        <BorderContent>
-          <BorderSvg />
-        </BorderContent>
-      </BorderBottomWrapper>
+      <BorderBottom>
+        <span><BorderSvg /></span>
+      </BorderBottom>
     );
   }
 }

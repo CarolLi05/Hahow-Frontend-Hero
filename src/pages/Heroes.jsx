@@ -1,5 +1,5 @@
 import { Outlet, useNavigation } from "react-router-dom";
-import { Container, Col } from "../components/UI/Layout";
+import { Container } from "../components/UI/Layout";
 import HeroList from "../components/HeroList/HeroList";
 import Loading from "../components/Loading";
 
@@ -8,7 +8,7 @@ export default function Heroes() {
   return (
     <Container>
       <HeroList />
-      <Col>{navigation.state === "loading" ? <Loading /> : <Outlet />}</Col>
+      {navigation.state === "loading" ? <Loading /> : <Outlet />}
     </Container>
   );
 }
