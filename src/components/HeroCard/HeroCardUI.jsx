@@ -46,6 +46,7 @@ const Thumbnail = styled.div`
 const Body = styled.div`
   position: relative;
   padding: 16px 10px 17px;
+  margin-bottom: 12px;
   overflow: hidden;
   line-height: 1;
   background: ${({ theme }) => theme.colors.black};
