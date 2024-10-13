@@ -1,4 +1,4 @@
-import { PlusSvg, MinusSvg } from "../UI/Icon";
+import { PlusSvg, MinusSvg } from "../UI/Icons";
 import { Wrapper, Title, Control, Points, Button } from "./AbilityUI";
 
 export default function Ability({
