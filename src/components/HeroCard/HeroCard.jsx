@@ -1,8 +1,8 @@
 import { Card, Thumbnail, ImgWrapper, Img, Body, Title } from "./HeroCardUI";
 
-export default function HeroCard({id, name, image, selected}) {
+export default function HeroCard({id, name, image}) {
   return (
-    <Card className={`${selected ? "active" : ""}`} to={`/heroes/${id}`}>
+    <Card to={`/heroes/${id}`}>
       <Thumbnail>
         <ImgWrapper>
           <Img src={image} alt={name} />
