@@ -12,15 +12,15 @@ import { HeroProfileAction } from "./router_task/HeroProfileAction";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/heroes" replace />,
+    element: <Navigate to="heroes" replace />,
   },
   {
-    path: "/heroes",
+    path: "heroes",
     element: <Heroes />,
     loader: HeroesLoader,
     children: [
       {
-        path: "/heroes/:heroId",
+        path: ":heroId",
         element: <HeroProfile />,
         loader: HeroProfileLoader,
         action: HeroProfileAction,
