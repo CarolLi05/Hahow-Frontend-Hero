@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLoaderData, useSubmit, useNavigation } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
+import { useProfile } from "../../hooks/useProfile";
 import {
   ProfileWrapper,
   Counter,
@@ -12,52 +12,15 @@ import Ability from "../Ability/Ability";
 
 export default function HeroProfile() {
   const heroProfileData = useLoaderData();
-  const [abilities, setAbilities] = useState({
-    str: heroProfileData.str,
-    int: heroProfileData.int,
-    agi: heroProfileData.agi,
-    luk: heroProfileData.luk,
-  });
-  const [remainingPoints, setRemainingPoints] = useState(0);
-  const submit = useSubmit();
+  const {
+    abilities,
+    remainingPoints,
+    handleIncrease,
+    handleDecrease,
+    handleSave,
+  } = useProfile(heroProfileData);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-
-  function handleIncrease(ability) {
-    if (remainingPoints > 0) {
-      setAbilities((prev) => ({
-        ...prev,
-        [ability]: prev[ability] + 1,
-      }));
-      setRemainingPoints((prev) => prev - 1);
-    }
-  }
-  function handleDecrease(ability) {
-    if (abilities[ability] > 0) {
-      setAbilities((prev) => ({
-        ...prev,
-        [ability]: prev[ability] - 1,
-      }));
-      setRemainingPoints((prev) => prev + 1);
-    }
-  }
-
-  function handleSave(data) {
-    const totalPoints = Object.values(heroProfileData).reduce(
-      (result, point) => result + point
-    );
-    const currentTotalPoints = Object.values(abilities).reduce(
-      (result, point) => result + point
-    );
-
-    if (remainingPoints > 0) {
-      alert(`你還有 ${remainingPoints} 點沒有分配到唷！`);
-    }
-
-    if (totalPoints === currentTotalPoints) {
-      submit(data, { method: "PATCH", encType: "application/json" });
-    }
-  }
 
   return (
     <ProfileWrapper>
