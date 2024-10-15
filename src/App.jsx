@@ -8,6 +8,7 @@ import HeroProfile from "./components/HeroProfile/HeroProfile";
 import { HeroesLoader } from "./router_task/HeroesLoader";
 import { HeroProfileLoader } from "./router_task/HeroProfileLoader";
 import { HeroProfileAction } from "./router_task/HeroProfileAction";
+import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: "heroes",
     element: <Heroes />,
+    errorElement: <ErrorPage />,
     loader: HeroesLoader,
     children: [
       {
