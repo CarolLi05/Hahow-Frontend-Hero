@@ -22,21 +22,39 @@ Clone 專案後，到資料夾根目錄執行以下步驟：
   npm run dev
   ```
 
-## 專案的資料夾架構、Application 的邏輯架構，說明你的設計理念
-```
-folder tree
-```
+## 專案架構邏輯與規劃
+
+### 目錄架構
+
+主要的程式碼位於 `/src` 目錄中。
+
+- `/apis`
+  - 專案中需要呼叫的外部 API。
+- `/components`
+  - React components
+  - 負責元件的畫面呈現與使用者交互的處理。
+- `/pages`
+  - 負責頁面渲染與 routing 相關邏輯的處理。
+- `/hooks`
+  - 負責專案需要使用到的狀態管理與狀態相關的功能邏輯。
+- `/router_task`
+  - React Router 所使用到的 Data API，
+- `/styles`
+  - styled-components 的樣式全域設定。
+
+### 元件
+盡量將應用的狀態與狀態相關的邏輯抽離，讓元件專注於畫面呈現與使用者交互的處理。
 
 ## 第三方 library 的使用及功能簡介
 
 ### dependencies：
 
 - react
-  - 當前主流的前端開發框架之一，
 - react-router-dom
-  - 前端路由的解決方案，此專案版本為 v6.26，使用 `createBrowserRouter` 及 `RouterProvider`，並用物件的方式定義路由，比起巢狀的路由寫法更為簡潔。
+  - 前端路由的解決方案，此專案版本為 v6.26，使用 `createBrowserRouter` 及 `RouterProvider`，並用物件的方式定義路由，比起巢狀路由寫法更為簡潔。
+  - 提供 Data API，可以處理發送請求及錯誤訊息。
 - styled-components
-  - React 生態圈中其中一種 CSS-in-JS 的解決方案，以 ES6 模板字串撰寫 CSS，跟 CSS Modules 一樣有獨立的 className，不用擔心 className 命名重複的問題，可以透過 props 動態改變元件樣式，也可以方便對元件樣式進行擴展。
+  - React 生態圈中其中一種 CSS-in-JS 的解決方案，以 ES6 模板字串撰寫 CSS，跟 CSS Modules 一樣有獨立的 className，不用擔心 className 命名重複的問題，可以透過 props 動態改變元件樣式，方便對樣式進行擴展。
 
 ### devDependencies：
 
