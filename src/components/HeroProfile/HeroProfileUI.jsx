@@ -12,14 +12,26 @@ const Counter = styled(Col)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 0.75rem;
+  margin-left: 1.25rem;
+
+  @media screen and ${breakpoints.xs} {
+    display: block;
+    margin-left: 0;
+
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
 `;
 
 const SubmitContent = styled(Col)`
   display: flex;
   justify-content: end;
   align-self: end;
-  margin-right: 0.75rem;
+  margin-right: 1.25rem;
+
+  @media screen and ${breakpoints.xs} {
+    margin-right: 0;
+  }
 `;
 
 const RemainingPoints = styled.p`
