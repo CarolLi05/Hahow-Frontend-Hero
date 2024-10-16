@@ -57,6 +57,8 @@ Clone 專案後，到資料夾根目錄執行以下步驟：
   - 提供 Data API，可以處理發送請求及錯誤訊息。
 - styled-components
   - React 生態圈中其中一種 CSS-in-JS 的解決方案，以 ES6 模板字串撰寫 CSS，跟 CSS Modules 一樣有獨立的 className，不用擔心 className 命名重複的問題，可以透過 props 動態改變元件樣式，方便對樣式進行擴展。
+- react-hot-toast
+  - 簡易輕量的 react notification UI 套件。
 
 ### devDependencies：
 
