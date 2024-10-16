@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
-import breakpoint from "../../styles/breakpoint.js";
+import breakpoints from "../../styles/breakpoints.js";
 
 const ImgWrapper = styled.div`
   position: relative;
@@ -82,7 +82,7 @@ const Body = styled.div`
     z-index: 40;
   }
 
-  @media screen and ${breakpoint.sm} {
+  @media screen and ${breakpoints.sm} {
     padding: 16px 24px 17px 20px;
   }
 `;

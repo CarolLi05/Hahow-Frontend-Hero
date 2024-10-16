@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import breakpoints from "../../styles/breakpoints.js";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,10 @@ const Title = styled.span`
   font-size: 1.25rem;
   font-weight: 700;
   margin-right: 0.5rem;
+
+  @media screen and ${breakpoints.xs} {
+    font-size: 1rem;
+  }
 `;
 
 const Control = styled.span`
@@ -20,12 +25,20 @@ const Control = styled.span`
   justify-content: space-between;
   align-items: center;
   width: 10rem;
+
+  @media screen and ${breakpoints.xs} {
+    width: 6rem;
+  }
 `;
 
 const Points = styled.span`
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0.75rem;
+
+  @media screen and ${breakpoints.xs} {
+    font-size: 1.25rem;
+  }
 `;
 
 const Button = styled.button`
@@ -48,6 +61,13 @@ const Button = styled.button`
   &:disabled {
     stroke: ${({ theme }) => theme.colors.disabled};
     background-color: ${({ theme }) => theme.colors.white};
+  }
+
+  @media screen and ${breakpoints.xs} {
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { Row, Col } from "../UI/Layout";
+import breakpoints from "../../styles/breakpoints.js";
 
 const ProfileWrapper = styled(Row)`
   margin-top: 2rem;
@@ -26,6 +27,10 @@ const RemainingPoints = styled.p`
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
+
+  @media screen and ${breakpoints.xs} {
+    font-size: 1rem;
+  }
 `;
 
 export { ProfileWrapper, Counter, SubmitContent, RemainingPoints };
