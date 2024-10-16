@@ -13,7 +13,7 @@ export function ProfileError() {
   let message = "";
 
   if (error.status === 500) {
-    message = "無法取得 Hero 的能力值資料";
+    message = error.message;
   }
 
   if (error.status === 404) {

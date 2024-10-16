@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import { updateProfile } from "../api/apis";
 
 export async function HeroProfileAction({ request, params }) {
@@ -7,7 +8,7 @@ export async function HeroProfileAction({ request, params }) {
 
   const response = await updateProfile(id, method, heroData);
   if (!response.ok) {
-    throw new Error("Couldn't update Heroes Data!");
+    throw json({ message: "Couldn't update Hero Profile Data." }, { status: 500 });
   } else {
     return response;
   }
