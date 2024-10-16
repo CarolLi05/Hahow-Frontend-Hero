@@ -9,7 +9,7 @@ import {
 import Border from "./Border";
 import { SubmitButton } from "./SubmitButton";
 import Ability from "../Ability/Ability";
-import { Toaster } from "react-hot-toast";
+import Notify from "../../utils/Notify";
 
 export default function HeroProfile() {
   const heroProfileData = useLoaderData();
@@ -25,7 +25,7 @@ export default function HeroProfile() {
 
   return (
     <>
-      <Toaster />
+      <Notify />
       <ProfileWrapper>
         <Border position="top" />
         <Counter>

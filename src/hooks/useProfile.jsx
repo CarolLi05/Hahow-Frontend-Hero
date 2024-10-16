@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useSubmit, useActionData } from "react-router-dom";
-import { notify } from "../utils/toast";
+import { useSubmit, useActionData, useNavigation } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export function useProfile(heroProfileData) {
@@ -13,16 +12,22 @@ export function useProfile(heroProfileData) {
   const [remainingPoints, setRemainingPoints] = useState(0);
   const submit = useSubmit();
   const actionData = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   useEffect(() => {
-    if (actionData) {
-      notify("更新成功", "success");
+    if (actionData === "OK" && !isSubmitting) {
+      toast.success("更新成功");
+    }
+
+    if (isSubmitting) {
+      toast.loading("更新中...");
     }
 
     return () => {
       toast.remove();
-    }
-  }, [actionData]);
+    };
+  }, [actionData, isSubmitting]);
 
   function handleIncrease(ability) {
     if (remainingPoints > 0) {
@@ -54,7 +59,7 @@ export function useProfile(heroProfileData) {
       );
 
       if (remainingPoints > 0) {
-        alert(`你還有 ${remainingPoints} 點沒有分配到唷！`);
+        toast.error(`你還有 ${remainingPoints} 點沒有分配到唷！`);
       }
 
       if (totalPoints === currentTotalPoints) {
