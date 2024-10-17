@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 import toast from "react-hot-toast";
+import ObjCompare from "../utils/ObjCompare.js";
 
 export function useProfile(heroProfileData) {
   const [abilities, setAbilities] = useState({
@@ -12,6 +13,7 @@ export function useProfile(heroProfileData) {
   const [remainingPoints, setRemainingPoints] = useState(0);
   const fetcher = useFetcher({ key: "update-profile" });
   const { data: fetcherData, state: fetcherState } = fetcher;
+  const isSameValue = ObjCompare(abilities, heroProfileData);
 
   useEffect(() => {
     if (fetcherState === "submitting") {
@@ -49,6 +51,11 @@ export function useProfile(heroProfileData) {
 
   const handleSave = useCallback(
     (data) => {
+      if (isSameValue) {
+        toast("調整看看能力值吧！");
+        return;
+      }
+
       const totalPoints = Object.values(heroProfileData).reduce(
         (result, point) => result + point
       );
@@ -70,7 +77,7 @@ export function useProfile(heroProfileData) {
         });
       }
     },
-    [heroProfileData, abilities, remainingPoints, fetcher]
+    [heroProfileData, abilities, remainingPoints, fetcher, isSameValue]
   );
 
   return {
