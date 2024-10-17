@@ -10,6 +10,6 @@ export async function HeroProfileAction({ request, params }) {
   if (!response.ok) {
     throw json({ message: "Couldn't update Hero Profile Data." }, { status: 500 });
   } else {
-    return response;
+    return { message: '更新成功！'};
   }
 }

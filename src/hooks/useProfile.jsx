@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useSubmit, useActionData, useNavigation } from "react-router-dom";
+import { useFetcher } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export function useProfile(heroProfileData) {
@@ -10,24 +10,22 @@ export function useProfile(heroProfileData) {
     luk: heroProfileData.luk,
   });
   const [remainingPoints, setRemainingPoints] = useState(0);
-  const submit = useSubmit();
-  const actionData = useActionData();
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const fetcher = useFetcher({ key: "update-profile" });
+  const { data: fetcherData, state: fetcherState } = fetcher;
 
   useEffect(() => {
-    if (actionData === "OK" && !isSubmitting) {
-      toast.success("更新成功");
+    if (fetcherState === "submitting") {
+      toast.loading("更新中...");
     }
 
-    if (isSubmitting) {
-      toast.loading("更新中...");
+    if (fetcherState === "idle" && fetcherData && fetcherData.message) {
+      toast.success(fetcherData.message);
     }
 
     return () => {
       toast.remove();
     };
-  }, [actionData, isSubmitting]);
+  }, [fetcherData, fetcherState]);
 
   function handleIncrease(ability) {
     if (remainingPoints > 0) {
@@ -38,7 +36,7 @@ export function useProfile(heroProfileData) {
       setRemainingPoints((prev) => prev - 1);
     }
   }
-  
+
   function handleDecrease(ability) {
     if (abilities[ability] > 0) {
       setAbilities((prev) => ({
@@ -48,7 +46,7 @@ export function useProfile(heroProfileData) {
       setRemainingPoints((prev) => prev + 1);
     }
   }
-  
+
   const handleSave = useCallback(
     (data) => {
       const totalPoints = Object.values(heroProfileData).reduce(
@@ -63,13 +61,14 @@ export function useProfile(heroProfileData) {
       }
 
       if (totalPoints === currentTotalPoints) {
-        submit(data, {
+        fetcher.submit(data, {
           method: "PATCH",
-          encType: "application/json"
+          encType: "application/json",
+          key: "update-profile",
         });
       }
     },
-    [heroProfileData, abilities, remainingPoints, submit]
+    [heroProfileData, abilities, remainingPoints, fetcher]
   );
 
   return {

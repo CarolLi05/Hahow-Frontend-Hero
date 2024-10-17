@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData, useFetcher } from "react-router-dom";
 import { useProfile } from "../../hooks/useProfile";
 import {
   ProfileWrapper,
@@ -20,8 +20,8 @@ export default function HeroProfile() {
     handleDecrease,
     handleSave,
   } = useProfile(heroProfileData);
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const fetcher = useFetcher({ key: "update-profile" });
+  const isSubmitting = fetcher.state === "submitting";
 
   return (
     <>
