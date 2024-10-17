@@ -7,19 +7,19 @@ const Container = styled.div`
   margin-left: auto;
   padding-right: calc(0.5 * 1.5rem);
   padding-left: calc(0.5 * 1.5rem);
-  @media screen and ${breakpoints.sm} {
+  @media screen and (min-width: ${breakpoints.sm}) {
     max-width: 540px;
   }
 
-  @media screen and ${breakpoints.md} {
+  @media screen and (min-width: ${breakpoints.md}) {
     max-width: 720px;
   }
 
-  @media screen and ${breakpoints.lg} {
+  @media screen and (min-width: ${breakpoints.lg}) {
     max-width: 960px;
   }
 
-  @media screen and ${breakpoints.xl} {
+  @media screen and (min-width: ${breakpoints.xl}) {
     max-width: 1140px;
   }
 `;
@@ -38,11 +38,11 @@ const Col = styled.div`
   padding-left: calc(0.5 * 1.5rem);
   box-sizing: border-box;
 
-  @media screen and ${breakpoints.sm} {
+  @media screen and (min-width: ${breakpoints.sm}) {
     flex-basis: 50%;
   }
 
-  @media screen and ${breakpoints.md} {
+  @media screen and (min-width: ${breakpoints.md}) {
     flex-basis: 25%;
   }
 `;

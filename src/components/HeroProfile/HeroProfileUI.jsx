@@ -14,7 +14,7 @@ const Counter = styled(Col)`
   justify-content: center;
   margin-left: 1.25rem;
 
-  @media screen and ${breakpoints.xs} {
+  @media screen and (max-width: ${breakpoints.sm}) {
     display: block;
     margin-left: 0;
 
@@ -29,7 +29,7 @@ const SubmitContent = styled(Col)`
   align-self: end;
   margin-right: 1.25rem;
 
-  @media screen and ${breakpoints.xs} {
+  @media screen and (max-width: ${breakpoints.sm}) {
     margin-right: 0;
   }
 `;
@@ -40,7 +40,7 @@ const RemainingPoints = styled.p`
   font-weight: 700;
   margin-bottom: 1rem;
 
-  @media screen and ${breakpoints.xs} {
+  @media screen and (max-width: ${breakpoints.sm}) {
     font-size: 1rem;
   }
 `;

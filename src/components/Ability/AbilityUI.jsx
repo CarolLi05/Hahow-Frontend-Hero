@@ -15,7 +15,7 @@ const Title = styled.span`
   font-weight: 700;
   margin-right: 0.5rem;
 
-  @media screen and ${breakpoints.xs} {
+  @media screen and (max-width: ${breakpoints.sm}) {
     font-size: 1rem;
   }
 `;
@@ -26,8 +26,8 @@ const Control = styled.span`
   align-items: center;
   width: 10rem;
 
-  @media screen and ${breakpoints.xs} {
-    width: 6rem;
+  @media screen and (max-width: ${breakpoints.sm}) {
+    width: 8rem;
   }
 `;
 
@@ -36,7 +36,7 @@ const Points = styled.span`
   font-weight: 700;
   margin: 0 0.75rem;
 
-  @media screen and ${breakpoints.xs} {
+  @media screen and (max-width: ${breakpoints.sm}) {
     font-size: 1.25rem;
   }
 `;
@@ -63,7 +63,7 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.white};
   }
 
-  @media screen and ${breakpoints.xs} {
+  @media screen and (max-width: ${breakpoints.sm}) {
     & svg {
       width: 20px;
       height: 20px;
