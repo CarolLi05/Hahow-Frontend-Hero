@@ -57,7 +57,9 @@ export function useProfile(heroProfileData) {
       );
 
       if (remainingPoints > 0) {
-        toast.error(`你還有 ${remainingPoints} 點沒有分配到唷！`);
+        toast.error(`你還有 ${remainingPoints} 點沒有分配到唷！`, {
+          id: "hasRemainingPoints",
+        });
       }
 
       if (totalPoints === currentTotalPoints) {
